@@ -32,6 +32,12 @@ namespace opg_4_simple_rest_service.Controllers
             manager.DeletePlayer(id);
             return manager.GetAll();
         }
+        [HttpPut("{id}")]
+        public IEnumerable<FootballPlayer> Put(int id, [FromBody] FootballPlayer fbp)
+        {
+            manager.Update(fbp, id);
+            return manager.GetAll();
+        }
 
     }
 }

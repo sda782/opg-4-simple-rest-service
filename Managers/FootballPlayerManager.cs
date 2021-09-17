@@ -5,7 +5,10 @@ namespace opg_4_simple_rest_service.Managers
 {
     public class FootballPlayerManager
     {
-        private static List<FootballPlayer> fbp_catalog = new List<FootballPlayer>();
+        private static int next_id = 1;
+        private static List<FootballPlayer> fbp_catalog = new List<FootballPlayer>(){
+            new FootballPlayer(next_id++,"andy", 100, 2)
+        };
 
         public List<FootballPlayer> GetAll()
         {
@@ -25,6 +28,7 @@ namespace opg_4_simple_rest_service.Managers
 
         public void Add(FootballPlayer fbp)
         {
+            fbp.Id = next_id++;
             fbp_catalog.Add(fbp);
         }
 
@@ -32,9 +36,12 @@ namespace opg_4_simple_rest_service.Managers
         {
             fbp_catalog.Remove(GetPlayer(id));
         }
-        public void Update(FootballPlayer fbp)
+        public void Update(FootballPlayer fbp, int id)
         {
-            //  Comming soon
+            FootballPlayer temp = GetPlayer(id);
+            temp.Name = fbp.Name;
+            temp.Price = fbp.Price;
+            temp.Shirt_number = fbp.Shirt_number;
         }
     }
 }
