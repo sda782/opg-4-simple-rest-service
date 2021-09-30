@@ -40,9 +40,9 @@ namespace opg_4_simple_rest_service
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "opg_4_simple_rest_service v1"));
-            }
 
             app.UseHttpsRedirection();
 
